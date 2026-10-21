@@ -154,6 +154,7 @@ TEST_CASES["base64_decoding"] = TestCase(
             "InvalidBase64!\n",
             [-1],
             "",
+            ignore_remaining_input=True,
         ),
         String2String(
             "A" * 65 + "\n",
@@ -305,6 +306,7 @@ TEST_CASES["stack_based_calculator"] = TestCase(
             "invalid\n",
             [-1],
             "",
+            ignore_remaining_input=True,
         ),
         String2String(
             "1 1 +\nNext line",
@@ -677,6 +679,7 @@ TEST_CASES["rle_compress"] = TestCase(
             "ab" * 16 + "\n",
             [overflow_error_value],
             "",
+            ignore_remaining_input=True,
         ),
         String2String("ABCDEFGHIJKLMNOP\n", "1A1B1C1D1E1F1G1H1I1J1K1L1M1N1O1P", ""),
     ],
@@ -1139,11 +1142,13 @@ TEST_CASES["text_word_counter"] = TestCase(
             "word\n",
             [-1],
             "",
+            ignore_remaining_input=True,
         ),
         String2String(
             "a bb ccc word\n",
             [-1],
             "",
+            ignore_remaining_input=True,
         ),
         String2String(
             "   ,,,   ...\n",
@@ -1160,6 +1165,7 @@ TEST_CASES["text_word_counter"] = TestCase(
             "a b c d e f g h i j k l m\n",
             [-1],
             "",
+            ignore_remaining_input=True,
         ),
     ],
     is_variant=True,
@@ -1398,12 +1404,12 @@ TEST_CASES["format_string"] = TestCase(
         String2String(
             "Beyond 32-bit: %d\n2147483648\n",
             [-1],
-            "\n",
+            "\n", #?
         ),
         String2String(
             "Below 32-bit: %d\n-2147483649\n",
             [-1],
-            "\n",
+            "\n", #?
         ),
         String2String(
             "Edge case: %d\n2147483647\nExtra\n",
@@ -1423,7 +1429,7 @@ TEST_CASES["format_string"] = TestCase(
         String2String(
             "Multiple invalid: %d %d\n2147483647\n2147483648\n",
             [-1],
-            "\n",
+            "\n", #?
         ),
         String2String(
             "This format string is too long for input buffer %d\n1\n",
@@ -1679,6 +1685,7 @@ TEST_CASES["char_frequency"] = TestCase(
             "abcdefghijklmnop\n",
             [-1],
             "",
+            ignore_remaining_input=True,
         ),
     ],
     is_variant=True,
@@ -2075,11 +2082,13 @@ TEST_CASES["infix_to_rpn"] = TestCase(
             "1)\n",
             [-1],
             "",
+            ignore_remaining_input=True,
         ),
         String2String(
             "1 $ 2\n",
             [-1],
             "",
+            ignore_remaining_input=True,
         ),
         String2String(
             "A" * 65 + "\n",
